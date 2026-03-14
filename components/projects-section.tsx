@@ -1,39 +1,44 @@
-import Link from "next/link"
-import Image from "next/image"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { ArrowUpRight, Github } from "lucide-react"
+import Link from "next/link";
+import Image from "next/image";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { ArrowUpRight, Github } from "lucide-react";
 
 const projects = [
   {
     title: "QuickSummary",
-    description: "AI-powered summarization tool with Google Gemini API integration and CI/CD pipeline.",
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/QuickSummary-VOleiJ5bR3nsXZU6G5xraq8DW9u6gh.png",
+    description:
+      "AI-powered summarization tool with Google Gemini API integration and CI/CD pipeline.",
+    image:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/QuickSummary-VOleiJ5bR3nsXZU6G5xraq8DW9u6gh.png",
     tags: ["Next.js", "TypeScript", "Gemini API", "GitHub Actions"],
     liveUrl: "#",
     githubUrl: "https://github.com/ak01abhinav",
   },
   {
     title: "WeatherNow",
-    description: "Responsive weather dashboard with real-time city search and OpenWeatherMap API.",
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/wheatherNowIllustration-GO8ikUAUm039fV9Or35wWqYIO6DzQk.png",
+    description:
+      "Responsive weather dashboard with real-time city search and OpenWeatherMap API.",
+    image:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/wheatherNowIllustration-GO8ikUAUm039fV9Or35wWqYIO6DzQk.png",
     tags: ["Next.js", "OpenWeatherMap API", "Tailwind CSS", "React"],
     liveUrl: "#",
     githubUrl: "https://github.com/ak01abhinav",
   },
   {
     title: "Portfolio Website",
-    description: "Modern developer portfolio with dark blue theme, resume preview, and contact form.",
+    description:
+      "Modern developer portfolio with dark blue theme, resume preview, and contact form.",
     image: "/images/portfolio-preview.jpg",
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui"],
     liveUrl: "#",
     githubUrl: "https://github.com/ak01abhinav",
   },
-]
+];
 
 export function ProjectsSection() {
   return (
-    <section id="projects" className="py-24 px-6 bg-secondary/30">
+    <section id="projects" className="py-24 px-6">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <p className="text-primary text-sm font-medium tracking-widest uppercase mb-4">
@@ -43,7 +48,8 @@ export function ProjectsSection() {
             Featured Projects
           </h2>
           <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
-            Here are some of my recent projects showcasing my skills in building modern web applications.
+            Here are some of my recent projects showcasing my skills in building
+            modern web applications.
           </p>
         </div>
 
@@ -89,11 +95,11 @@ export function ProjectsSection() {
                     </Link>
                   </div>
                 </div>
-                
+
                 <p className="text-muted-foreground text-sm leading-relaxed mb-4 line-clamp-2">
                   {project.description}
                 </p>
-                
+
                 {/* Technology Pills - Very Bottom */}
                 <div className="flex flex-wrap gap-1.5 pt-3 border-t border-border">
                   {project.tags.map((tag) => (
@@ -112,5 +118,5 @@ export function ProjectsSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

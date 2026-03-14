@@ -1,10 +1,10 @@
-import { Badge } from "@/components/ui/badge"
-import { Briefcase, Calendar, MapPin, Building2, Users } from "lucide-react"
+import { Briefcase, Calendar, MapPin, Building2, Users } from "lucide-react";
 
 const experiences = [
   {
     company: "Appeneure - Stealth Talent Solutions",
-    companyDescription: "Appeneure is a mobile and web app development company based in Noida, India, founded in 2018. The company builds Android, iOS, web, and AI-powered applications for startups and businesses, providing UI/UX design, cross-platform development, and backend services.",
+    companyDescription:
+      "Appeneure is a mobile and web app development company based in Noida, India, founded in 2018. The company builds Android, iOS, web, and AI-powered applications for startups and businesses, providing UI/UX design, cross-platform development, and backend services.",
     role: "Software Developer Intern",
     type: "HR SaaS Product",
     location: "Greater Noida, UP",
@@ -17,105 +17,139 @@ const experiences = [
       "Used Jira for day-to-day task management - picking up sprint tickets, tracking progress, and moving work through review cycles with the client team.",
       "Collaborated through Git branching, code reviews, and pull requests; identified and fixed performance bottlenecks and usability issues across multiple sprints.",
     ],
-    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui", "Remix", "REST APIs", "Jira", "Git"],
+    technologies: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "shadcn/ui",
+      "Remix",
+      "REST APIs",
+      "Jira",
+      "Git",
+    ],
   },
-]
+];
 
 export function ExperienceSection() {
   return (
-    <section id="experience" className="py-24 px-6">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <p className="text-primary text-sm font-medium tracking-widest uppercase mb-4">
+    <section
+      id="experience"
+      className="py-24 px-6 relative w-full overflow-hidden"
+    >
+      <div className="max-w-5xl mx-auto">
+        <div className="text-center mb-24 flex flex-col items-center">
+          <p className="text-blue-500 font-bold tracking-[0.2em] text-sm uppercase mb-3">
             Career
           </p>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4 tracking-tight">
             Work Experience
           </h2>
-          <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-muted-foreground text-sm md:text-base max-w-2xl mx-auto">
             My professional journey in building production-grade applications.
           </p>
         </div>
 
-        <div className="space-y-12">
-          {experiences.map((exp, index) => (
-            <div key={index} className="grid lg:grid-cols-5 gap-8">
-              {/* Left Side - Company Info */}
-              <div className="lg:col-span-2 space-y-4">
-                <div className="p-6 rounded-2xl bg-card border border-border">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                      <Building2 className="text-primary" size={24} />
+        <div className="relative">
+          {/* Main Continuous Vertical Line */}
+          <div className="absolute left-[11px] top-4 bottom-0 w-[1px] bg-gradient-to-b from-blue-900/5 via-blue-700 to-blue-1000/30 md:block hidden" />
+
+          <div className="space-y-24">
+            {experiences.map((exp, index) => {
+              const [companyName, companySubtitle] = exp.company.split(" - ");
+              return (
+                <div
+                  key={index}
+                  className="relative grid md:grid-cols-[280px_1fr] lg:grid-cols-[340px_1fr] gap-12 md:gap-16 md:pl-20"
+                >
+                  {/* Timeline Dot */}
+                  <div className="hidden md:block absolute left-[6px] top-[14px] w-3 h-3 bg-blue-500 rounded-full ring-[6px] ring-[#0f172a] z-10 shadow-[0_0_15px_rgba(59,130,246,0.6)]" />
+
+                  {/* Left Column - Company Info (Pushed down into middle visually) */}
+                  <div className="flex flex-col items-start justify-center space-y-7">
+                    <div className="flex gap-4 items-center">
+                      <div className="w-14 h-14 rounded-2xl bg-[#0f172a] border border-blue-900/40 flex items-center justify-center shrink-0 shadow-lg">
+                        <Building2 className="text-blue-500" size={28} />
+                      </div>
+                      <div className="pt-1 max-w-[200px]">
+                        <h3 className="text-[22px] font-bold text-foreground leading-tight tracking-wide">
+                          {companyName}
+                        </h3>
+                        {companySubtitle && (
+                          <p className="text-blue-500 text-[15px] font-medium mt-1.5">
+                            {companySubtitle}
+                          </p>
+                        )}
+                      </div>
                     </div>
-                    <div>
-                      <h3 className="font-semibold text-foreground">{exp.company.split(" - ")[0]}</h3>
-                      <p className="text-sm text-primary">{exp.company.split(" - ")[1]}</p>
+
+                    <div className="space-y-4 pt-1">
+                      <div className="flex items-center gap-4 text-[15px]">
+                        <Calendar
+                          size={18}
+                          className="text-blue-500 shrink-0"
+                        />
+                        <span className="text-foreground font-semibold tracking-wide">
+                          {exp.period}
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-4 text-[15px]">
+                        <MapPin size={18} className="text-blue-500 shrink-0" />
+                        <span className="text-muted-foreground">
+                          {exp.location}
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-4 text-[15px]">
+                        <Users size={18} className="text-blue-500 shrink-0" />
+                        <span className="text-muted-foreground">
+                          {exp.type}
+                        </span>
+                      </div>
                     </div>
                   </div>
-                  
-                  <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-                    {exp.companyDescription}
-                  </p>
 
-                  <div className="space-y-2 pt-4 border-t border-border">
-                    <div className="flex items-center gap-2 text-sm">
-                      <Calendar size={14} className="text-primary" />
-                      <span className="text-foreground font-medium">{exp.period}</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-sm">
-                      <MapPin size={14} className="text-primary" />
-                      <span className="text-muted-foreground">{exp.location}</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-sm">
-                      <Users size={14} className="text-primary" />
-                      <span className="text-muted-foreground">{exp.type}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                  {/* Right Column - Role Details (Aligned to top) */}
+                  <div>
+                    <h3 className="text-3xl md:text-[34px] font-bold text-foreground mb-4 tracking-tight">
+                      {exp.role}
+                    </h3>
+                    <p className="text-blue-500 text-[13px] font-bold uppercase tracking-widest mb-8">
+                      Key Contributions
+                    </p>
 
-              {/* Right Side - Role & Highlights */}
-              <div className="lg:col-span-3">
-                <div className="p-6 rounded-2xl bg-card border border-border hover:border-primary/50 transition-colors h-full">
-                  <div className="flex items-start gap-4 mb-6">
-                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
-                      <Briefcase className="text-primary" size={24} />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-semibold text-foreground">{exp.role}</h3>
-                      <p className="text-primary">Key Contributions</p>
-                    </div>
-                  </div>
-
-                  <ul className="space-y-3 mb-6">
-                    {exp.highlights.map((highlight, i) => (
-                      <li key={i} className="text-sm text-muted-foreground flex items-start gap-3">
-                        <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
-                        <span className="leading-relaxed">{highlight}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="pt-4 border-t border-border">
-                    <p className="text-xs text-muted-foreground mb-3 uppercase tracking-wider">Technologies Used</p>
-                    <div className="flex flex-wrap gap-2">
-                      {exp.technologies.map((tech) => (
-                        <Badge
-                          key={tech}
-                          variant="secondary"
-                          className="text-xs bg-primary/10 text-primary hover:bg-primary/20"
+                    <ul className="space-y-5 mb-10">
+                      {exp.highlights.map((highlight, i) => (
+                        <li
+                          key={i}
+                          className="flex items-start gap-4 text-muted-foreground text-[16px] leading-[1.7]"
                         >
-                          {tech}
-                        </Badge>
+                          <span className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2.5 shrink-0 shadow-[0_0_8px_rgba(59,130,246,0.6)]" />
+                          <span>{highlight}</span>
+                        </li>
                       ))}
+                    </ul>
+
+                    <div>
+                      <p className="text-[12px] text-muted-foreground font-bold uppercase tracking-[0.2em] mb-5">
+                        Technologies Used
+                      </p>
+                      <div className="flex flex-wrap gap-3">
+                        {exp.technologies.map((tech) => (
+                          <span
+                            key={tech}
+                            className="px-4 py-2 text-[13px] font-semibold bg-[#0f172a] text-blue-400 rounded-full border border-blue-900/30 transition-all hover:bg-blue-900/20 hover:border-blue-500/30 cursor-default"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          ))}
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>
-  )
+  );
 }

@@ -30,24 +30,33 @@ export function Header() {
   useEffect(() => {
     const update = () => {
       if (containerRef.current) {
-        // We capture the initial position for accurate relative constraints
         const rect = containerRef.current.getBoundingClientRect();
-        const vMargin = radius + 20; // vertical room for radial items
-        const hMargin = 15; // practically no horizontal boundary (slight margin)
+        const vMargin = radius + 20;
+        const hMargin = 15;
+        // Use visualViewport on mobile for accurate height (accounts for browser chrome)
+        const viewH = window.visualViewport?.height ?? window.innerHeight;
+        const viewW = window.visualViewport?.width ?? window.innerWidth;
 
         setConstraints({
           left: hMargin - rect.left,
           top: vMargin - rect.top,
-          right: window.innerWidth - rect.right - hMargin,
-          bottom: window.innerHeight - rect.bottom - vMargin,
+          right: viewW - rect.right - hMargin,
+          bottom: viewH - rect.bottom - vMargin,
         });
 
-        setIsFlipped(rect.left + rect.width / 2 > window.innerWidth / 2);
+        setIsFlipped(rect.left + rect.width / 2 > viewW / 2);
       }
     };
     update();
     window.addEventListener("resize", update);
-    return () => window.removeEventListener("resize", update);
+    window.visualViewport?.addEventListener("resize", update);
+    // Re-compute before every touch so constraints are fresh
+    window.addEventListener("touchstart", update, { passive: true });
+    return () => {
+      window.removeEventListener("resize", update);
+      window.visualViewport?.removeEventListener("resize", update);
+      window.removeEventListener("touchstart", update);
+    };
   }, []);
 
   const updateFlippedStatus = () => {
@@ -74,7 +83,7 @@ export function Header() {
         ref={containerRef}
         drag
         dragConstraints={constraints}
-        dragElastic={0.15}
+        dragElastic={0}
         onDrag={updateFlippedStatus}
         className="fixed left-6 top-1/2 -translate-y-1/2 z-50 flex items-center justify-center w-16 h-16"
         onMouseEnter={() => {

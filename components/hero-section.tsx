@@ -5,7 +5,7 @@ import { Github, Linkedin, Mail, ArrowRight, Sparkles } from "lucide-react"
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-4 overflow-hidden pt-20 pb-16">
+    <section id="home" className="relative min-h-screen flex items-center justify-center px-4 overflow-hidden pt-20 pb-16">
       {/* Dynamic Background Elements */}
       <div className="absolute inset-0 bg-background" />
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full mix-blend-screen filter blur-[128px] animate-pulse" />

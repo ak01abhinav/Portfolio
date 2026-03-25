@@ -1,20 +1,40 @@
-"use client"
+"use client";
 
-import { Badge } from "@/components/ui/badge"
-import { Code2, Server, Wrench, FileJson, Sparkles, Layers, Terminal } from "lucide-react"
+import { Badge } from "@/components/ui/badge";
+import {
+  Code2,
+  Server,
+  Wrench,
+  FileJson,
+  Sparkles,
+  Layers,
+  Terminal,
+} from "lucide-react";
 
 const skillCategories = [
   {
     title: "Frontend Architecture",
     icon: Layers,
     color: "from-indigo-500 to-blue-500",
-    skills: ["Next.js (App Router)", "React", "TypeScript", "Tailwind CSS", "Redux/Zustand"],
+    skills: [
+      "Next.js (App Router)",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Redux/Zustand",
+    ],
   },
   {
     title: "API & Backend Comm",
     icon: Server,
     color: "from-purple-500 to-pink-500",
-    skills: ["RESTful APIs", "Swagger/OpenAPI", "JSON", "FastAPI Docs", "Axios/Fetch API"],
+    skills: [
+      "RESTful APIs",
+      "Swagger/OpenAPI",
+      "JSON",
+      "FastAPI Docs",
+      "Axios/Fetch API",
+    ],
   },
   {
     title: "Core Languages",
@@ -28,32 +48,38 @@ const skillCategories = [
     color: "from-orange-500 to-red-500",
     skills: ["Git/GitHub", "Jira", "Agile Workflow", "Vercel", "CI/CD Basics"],
   },
-]
+];
 
 const coreCompetencies = [
   {
     icon: Terminal,
     title: "End-to-End Ownership",
-    description: "I don't just write components. I integrate with backend APIs, manage state, and ensure optimal performance.",
+    description:
+      "I don't just write components. I integrate with backend APIs, manage state, and ensure optimal performance.",
     color: "from-indigo-500 to-blue-500",
   },
   {
     icon: FileJson,
     title: "API-First Mentality",
-    description: "Deep experience reading Swagger/OpenAPI docs and successfully integrating complex backend endpoints.",
+    description:
+      "Deep experience reading Swagger/OpenAPI docs and successfully integrating complex backend endpoints.",
     color: "from-purple-500 to-pink-500",
   },
   {
     icon: Sparkles,
     title: "Pixel-Perfect UI",
-    description: "Obsessive attention to design details, micro-animations, and responsive layouts that delight users.",
+    description:
+      "Obsessive attention to design details, micro-animations, and responsive layouts that delight users.",
     color: "from-emerald-500 to-teal-500",
   },
-]
+];
 
 export function SkillsSection() {
   return (
-    <section id="skills" className="py-24 px-4 relative overflow-hidden bg-background">
+    <section
+      id="skills"
+      className="py-24 px-4 relative overflow-hidden bg-background"
+    >
       {/* Dynamic Background */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
 
@@ -61,13 +87,20 @@ export function SkillsSection() {
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 backdrop-blur-md mb-6 shadow-[0_0_15px_rgba(var(--primary),0.15)]">
             <Sparkles className="w-4 h-4 text-primary" />
-            <span className="text-primary text-sm font-bold tracking-wide uppercase">The Arsenal</span>
+            <span className="text-primary text-sm font-bold tracking-wide uppercase">
+              The Arsenal
+            </span>
           </div>
           <h2 className="text-4xl md:text-5xl font-black text-foreground mb-6 tracking-tight">
-            Built for <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-indigo-400">Production.</span>
+            Built for{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-indigo-400">
+              Production.
+            </span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg leading-relaxed">
-            I specialize in the modern web stack. My tooling choices are deliberate, focusing on developer experience, type safety, and raw performance.
+            I specialize in the modern web stack. My tooling choices are
+            deliberate, focusing on developer experience, type safety, and raw
+            performance.
           </p>
         </div>
 
@@ -80,10 +113,12 @@ export function SkillsSection() {
             >
               {/* Animated glow on hover */}
               <div className="absolute inset-0 bg-gradient-to-r opacity-0 group-hover:opacity-10 transition-opacity duration-500 pointer-events-none ${category.color}" />
-              
+
               <div className="flex flex-col h-full relative z-10">
                 <div className="flex items-center gap-4 mb-6">
-                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${category.color} flex items-center justify-center shrink-0 shadow-lg`}>
+                  <div
+                    className={`w-12 h-12 rounded-xl bg-gradient-to-br ${category.color} flex items-center justify-center shrink-0 shadow-lg`}
+                  >
                     <category.icon className="text-white w-6 h-6" />
                   </div>
                   <h3 className="text-xl font-bold text-foreground tracking-tight">
@@ -115,7 +150,9 @@ export function SkillsSection() {
                 key={competency.title}
                 className="group relative p-8 rounded-2xl bg-secondary/30 border border-border/50 hover:bg-secondary/50 transition-all duration-300"
               >
-                <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${competency.color} flex items-center justify-center mb-6 shadow-lg transform group-hover:-translate-y-1 transition-transform duration-300`}>
+                <div
+                  className={`w-12 h-12 rounded-full bg-gradient-to-br ${competency.color} flex items-center justify-center mb-6 shadow-lg transform group-hover:-translate-y-1 transition-transform duration-300`}
+                >
                   <competency.icon className="text-white w-5 h-5" />
                 </div>
                 <h4 className="text-xl font-bold text-foreground mb-3 tracking-tight">
@@ -134,24 +171,40 @@ export function SkillsSection() {
           <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-indigo-500/5 to-purple-500/5" />
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center relative z-10">
             <div>
-              <div className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-primary to-indigo-400 mb-2">6+</div>
-              <div className="text-sm font-semibold tracking-wider text-muted-foreground uppercase">Months Enterprise Exp</div>
+              <div className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-primary to-indigo-400 mb-2">
+                6+
+              </div>
+              <div className="text-sm font-semibold tracking-wider text-muted-foreground uppercase">
+                Months Enterprise Exp
+              </div>
             </div>
             <div>
-              <div className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-primary to-indigo-400 mb-2">10+</div>
-              <div className="text-sm font-semibold tracking-wider text-muted-foreground uppercase">APIs Integrated</div>
+              <div className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-primary to-indigo-400 mb-2">
+                50+
+              </div>
+              <div className="text-sm font-semibold tracking-wider text-muted-foreground uppercase">
+                APIs Integrated
+              </div>
             </div>
             <div>
-              <div className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-primary to-indigo-400 mb-2">100%</div>
-              <div className="text-sm font-semibold tracking-wider text-muted-foreground uppercase">Task Completion</div>
+              <div className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-primary to-indigo-400 mb-2">
+                99%
+              </div>
+              <div className="text-sm font-semibold tracking-wider text-muted-foreground uppercase">
+                Task Completion
+              </div>
             </div>
             <div>
-              <div className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-primary to-indigo-400 mb-2">0</div>
-              <div className="text-sm font-semibold tracking-wider text-muted-foreground uppercase">Legacy Habits</div>
+              <div className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-primary to-indigo-400 mb-2">
+                100%
+              </div>
+              <div className="text-sm font-semibold tracking-wider text-muted-foreground uppercase">
+                Modern Stack Adoption
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
-  )
+  );
 }

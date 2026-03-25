@@ -12,7 +12,7 @@ const projects = [
     image:
       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/QuickSummary-VOleiJ5bR3nsXZU6G5xraq8DW9u6gh.png",
     tags: ["Next.js", "TypeScript", "Gemini API", "GitHub Actions"],
-    liveUrl: "#",
+    liveUrl: "https://quick-summarizer.vercel.app/",
     githubUrl: "https://github.com/ak01abhinav",
   },
   {
@@ -20,10 +20,9 @@ const projects = [
     problem: "Existing weather tools are cluttered and slow to load.",
     impact:
       "Developed a blazing-fast, responsive dashboard that performs sub-second data retrieval via OpenWeatherMap API. Built a sleek, intuitive UI in React and modernized styling with pure Tailwind CSS.",
-    image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/wheatherNowIllustration-GO8ikUAUm039fV9Or35wWqYIO6DzQk.png",
+    image: "/images/weatherNOW.png",
     tags: ["React", "OpenWeatherMap API", "Tailwind CSS"],
-    liveUrl: "#",
+    liveUrl: "https://weather-now-orcin.vercel.app/",
     githubUrl: "https://github.com/ak01abhinav",
   },
   {
@@ -94,6 +93,8 @@ export function ProjectsSection() {
                   </Link>
                   <Link
                     href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center hover:bg-primary/90 transition-all shadow-lg"
                     aria-label={`Visit ${project.title} live`}
                   >

@@ -112,7 +112,7 @@ export function SkillsSection() {
               className="group relative bg-card/60 backdrop-blur-md rounded-2xl border border-border/50 hover:border-primary/50 transition-all duration-500 overflow-hidden shadow-lg p-6"
             >
               {/* Animated glow on hover */}
-              <div className="absolute inset-0 bg-gradient-to-r opacity-0 group-hover:opacity-10 transition-opacity duration-500 pointer-events-none ${category.color}" />
+              <div className={`absolute inset-0 bg-gradient-to-r opacity-0 group-hover:opacity-10 transition-opacity duration-500 pointer-events-none ${category.color}`} />
 
               <div className="flex flex-col h-full relative z-10">
                 <div className="flex items-center gap-4 mb-6">

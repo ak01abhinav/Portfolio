@@ -13,7 +13,15 @@ import {
   Github,
   Linkedin,
   ArrowRight,
+  CheckCircle2,
 } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
@@ -22,6 +30,7 @@ export function ContactSection() {
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showSuccessDialog, setShowSuccessDialog] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -30,7 +39,7 @@ export function ContactSection() {
     await new Promise((resolve) => setTimeout(resolve, 1000));
     setIsSubmitting(false);
     setFormData({ name: "", email: "", message: "" });
-    alert("Message sent successfully! I'll get back to you soon.");
+    setShowSuccessDialog(true);
   };
 
   return (
@@ -212,6 +221,38 @@ export function ContactSection() {
           </div>
         </div>
       </div>
+
+      <Dialog open={showSuccessDialog} onOpenChange={setShowSuccessDialog}>
+        <DialogContent
+          showCloseButton={false}
+          className="max-w-xs rounded-3xl border border-border/30 bg-[#1a1d24] p-8 shadow-2xl"
+        >
+          <div className="flex flex-col items-center text-center gap-5">
+            {/* Icon badge */}
+            <div className="w-16 h-16 rounded-full bg-[#2a2d36] flex items-center justify-center shadow-inner">
+              <CheckCircle2 className="w-8 h-8 text-blue-400" strokeWidth={2} />
+            </div>
+
+            <DialogHeader className="gap-2">
+              <DialogTitle className="text-[1.35rem] flex justify-center font-black text-foreground tracking-tight">
+                Message Sent!
+              </DialogTitle>
+              <DialogDescription className="text-muted-foreground text-sm leading-relaxed">
+                Your message has been successfully sent to the recipient. We
+                will get back to you soon.
+              </DialogDescription>
+            </DialogHeader>
+
+            {/* Done button – pill, blue gradient */}
+            <Button
+              onClick={() => setShowSuccessDialog(false)}
+              className="w-full h-12 rounded-full font-semibold text-white bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 border-none shadow-[0_0_20px_rgba(99,102,241,0.4)] transition-all duration-300"
+            >
+              Done
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
     </section>
   );
 }

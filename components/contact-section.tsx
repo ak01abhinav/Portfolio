@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Spinner } from "@/components/ui/spinner";
 import {
   Mail,
   MapPin,
@@ -237,9 +238,16 @@ export function ContactSection() {
                 >
                   <div className="absolute inset-0 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] bg-gradient-to-r from-transparent via-white/20 to-transparent z-0" />
                   <span className="relative z-10 flex items-center justify-center gap-2">
-                    {isSubmitting ? "Sending..." : "Send Message"}
-                    {!isSubmitting && (
-                      <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    {isSubmitting ? (
+                      <>
+                        <Spinner className="w-5 h-5" />
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        Send Message
+                        <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                      </>
                     )}
                   </span>
                 </Button>

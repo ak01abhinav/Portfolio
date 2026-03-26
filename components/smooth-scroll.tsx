@@ -18,6 +18,15 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
       smoothWheel: true,
       syncTouch: false,
       touchMultiplier: 2,
+      // Don't intercept scroll when the pointer is inside a natively scrollable element
+      prevent: (node: Element) => {
+        return (
+          node.tagName === "TEXTAREA" ||
+          (node.scrollHeight > node.clientHeight &&
+            getComputedStyle(node).overflowY !== "visible" &&
+            getComputedStyle(node).overflowY !== "hidden")
+        )
+      },
     })
     
     lenisRef.current = lenis

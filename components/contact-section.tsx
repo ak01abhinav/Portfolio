@@ -31,15 +31,36 @@ export function ContactSection() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccessDialog, setShowSuccessDialog] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    setIsSubmitting(false);
-    setFormData({ name: "", email: "", message: "" });
-    setShowSuccessDialog(true);
+    setSubmitError("");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (!res.ok) {
+        const data = await res.json();
+        throw new Error(data.error || "Something went wrong.");
+      }
+
+      setFormData({ name: "", email: "", message: "" });
+      setShowSuccessDialog(true);
+    } catch (err: unknown) {
+      setSubmitError(
+        err instanceof Error
+          ? err.message
+          : "Failed to send. Please try again.",
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -198,9 +219,15 @@ export function ContactSection() {
                     }
                     required
                     rows={4}
-                    className="p-5 rounded-2xl bg-secondary/50 border-border/50 focus-visible:ring-primary/50 resize-none text-base"
+                    className="p-5 rounded-2xl bg-secondary/50 border-border/50 focus-visible:ring-primary/50 resize-none text-base max-h-[225px] overflow-y-auto contact-scroll"
                   />
                 </div>
+
+                {submitError && (
+                  <p className="text-sm text-red-400 text-center -mb-2">
+                    {submitError}
+                  </p>
+                )}
 
                 <Button
                   type="submit"

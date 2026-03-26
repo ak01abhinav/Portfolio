@@ -124,6 +124,67 @@
   }
 }
 
+/* Styled scrollbar for message textarea */
+.contact-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+.contact-scroll::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 999px;
+}
+.contact-scroll::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    to bottom,
+    oklch(0.60 0.24 250 / 0.8),
+    oklch(0.70 0.20 220 / 0.5)
+  );
+  border-radius: 999px;
+  transition: background 0.2s ease;
+}
+.contact-scroll::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    to bottom,
+    oklch(0.60 0.24 250),
+    oklch(0.70 0.20 220 / 0.8)
+  );
+  box-shadow: 0 0 6px oklch(0.60 0.24 250 / 0.5);
+}
+/* Firefox */
+.contact-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: oklch(0.60 0.24 250 / 0.6) transparent;
+}
+
+/* Global website scrollbar */
+html::-webkit-scrollbar {
+  width: 6px;
+}
+html::-webkit-scrollbar-track {
+  background: oklch(0.12 0.03 250);
+}
+html::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    to bottom,
+    oklch(0.60 0.24 250 / 0.85),
+    oklch(0.70 0.20 220 / 0.55)
+  );
+  border-radius: 999px;
+  transition: background 0.2s ease;
+}
+html::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    to bottom,
+    oklch(0.60 0.24 250),
+    oklch(0.70 0.20 220 / 0.9)
+  );
+  box-shadow: 0 0 8px oklch(0.60 0.24 250 / 0.5);
+}
+/* Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: oklch(0.60 0.24 250 / 0.7) oklch(0.12 0.03 250);
+}
+
 @keyframes shimmer {
   0% {
     transform: translateX(-100%);

@@ -20,10 +20,10 @@ export function StaggeredText({
   triggerOnScroll = false,
 }: StaggeredTextProps) {
   const ref = useRef<HTMLSpanElement>(null);
-  const [hasTriggered, setHasTriggered] = useState(false);
+  // const [hasTriggered, setHasTriggered] = useState(false);
 
   useEffect(() => {
-    if (hasTriggered) return;
+    // if (hasTriggered) return;
 
     const reveal = () => {
       requestAnimationFrame(() => {
@@ -33,7 +33,7 @@ export function StaggeredText({
           });
         });
       });
-      setHasTriggered(true);
+      // setHasTriggered(true);
     };
 
     if (!triggerOnScroll) {
@@ -49,7 +49,7 @@ export function StaggeredText({
           observer.disconnect();
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.2 },
     );
 
     if (ref.current) {
@@ -57,7 +57,7 @@ export function StaggeredText({
     }
 
     return () => observer.disconnect();
-  }, [triggerOnScroll, hasTriggered]);
+  }, [triggerOnScroll]);
 
   const words = text.split(" ");
   let charIndex = charIndexOffset;
@@ -80,7 +80,7 @@ export function StaggeredText({
             );
           })}
           {wi < words.length - 1 && <span>&nbsp;</span>}
-          {wi < words.length - 1 && void charIndex++ || null}
+          {(wi < words.length - 1 && void charIndex++) || null}
         </span>
       ))}
     </span>

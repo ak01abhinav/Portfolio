@@ -193,3 +193,16 @@ html {
     transform: translateX(100%);
   }
 }
+
+/* Per-character slide-in wave animation */
+.char-reveal {
+  display: inline-block;
+  opacity: 0;
+  transform: translateX(-18px);
+  transition: opacity 500ms ease-out, transform 500ms ease-out;
+}
+
+.char-reveal.visible {
+  opacity: 1;
+  transform: translateX(0);
+}

@@ -1,7 +1,6 @@
 "use client"
 
 import { useEffect, useRef } from "react"
-// @ts-expect-error - lenis types may not be fully resolved in some environments
 import Lenis from "lenis"
 import { usePathname } from "next/navigation"
 
